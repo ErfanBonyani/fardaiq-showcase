@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">FardaIQ brand mark</title><desc id="desc">A geometric F and Q monogram representing intelligent forward motion.</desc>
+  <defs><linearGradient id="orbit" x1="74" y1="70" x2="440" y2="448" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6FE7FF"/><stop offset="0.48" stop-color="#3187FF"/><stop offset="1" stop-color="#7857FF"/></linearGradient></defs>
+  <path d="M256 54C133.4 54 54 130.8 54 253.5S133.4 453 256 453c45.8 0 86.2-10.8 118.5-31.1l43.9 37.1 39.6-47.2-42.9-36.3c27.8-33.1 42.9-75.1 42.9-122C458 130.8 378.6 54 256 54Zm0 65c84.4 0 133 48.9 133 134.5 0 28.9-5.6 53.8-16.2 73.8l-38.1-32.2-39.6 47.2 24.2 20.5c-18.2 8.4-39.3 12.2-63.3 12.2-84.4 0-133-49.9-133-135.5S171.6 119 256 119Z" fill="url(#orbit)"/>
+  <path d="M181 174c0-13.3 10.7-24 24-24h121c13.3 0 24 10.7 24 24v35H247v44h84v57h-84v90h-66V174Z" fill="#F6FAFF"/>
+  <circle cx="431" cy="425" r="16" fill="#6FE7FF"/>
+</svg>
