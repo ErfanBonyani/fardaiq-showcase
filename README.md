@@ -2,20 +2,31 @@
 
 ![FardaIQ cover](assets/brand/fardaiq-social-card.png)
 
-FardaIQ is a production-oriented, multilingual platform for presenting and ordering AI, automation, web, and software services. It combines a public marketing website, a guided project-ordering flow, a customer workspace, an academy, and an operations layer in one coherent product.
+FardaIQ is a production-oriented, multilingual platform for presenting and ordering AI, automation, web, and software services. It connects a public service website, a guided project brief, a customer workspace, an academy, and administrative operations in one product foundation.
 
-> **Portfolio showcase:** The complete production source code is maintained in a private repository. This public repository contains only presentation material, selected product visuals, and a high-level technical case study. No customer data, credentials, database schema, private API contract, or proprietary business logic is included.
+> **Portfolio showcase:** The complete implementation is maintained in a private repository. This public repository contains selected product visuals, a high-level architecture overview, and a technical case study. It includes no customer data, credentials, private API contracts, database definitions, or proprietary business logic.
 
-## Product overview
+## Employer quick view
 
-- Multilingual experience for Persian, English, and German
-- Native RTL/LTR layouts and localized SEO
+| Area | What this project demonstrates |
+|---|---|
+| Product design | Turning broad service requests into structured customer and operator workflows |
+| Front-end engineering | React/TypeScript, responsive layouts, multilingual routing, and native RTL/LTR behaviour |
+| Data and backend direction | Relational modelling, migrations, authenticated domains, and controlled file workflows |
+| Security thinking | Server-side authorization, CSRF protection, rate limiting, hardened sessions, and audit events |
+| Delivery | Git branches, pull requests, CI verification, dependency monitoring, and deployment preparation |
+| Product scope | Marketing, ordering, customer operations, learning, administration, and governance |
+
+## Product experience
+
+- Persian, English, and German interfaces
+- Native RTL/LTR layouts and locale-aware SEO
 - AI agents, automation, web products, and custom software services
-- Six-step project brief with conditional questions and draft recovery
+- Conditional six-step project brief with draft recovery
 - Customer portal for orders, projects, milestones, messages, files, and approvals
-- Academy with courses, learning paths, progress tracking, assessments, and certificates
+- Academy foundation for courses, learning paths, progress, assessments, and certificates
 - Administrative operations for projects, proposals, content, and course management
-- Privacy, accessibility, auditability, and EU/Germany-readiness considerations
+- Privacy, accessibility, auditability, and EU/Germany-readiness foundations
 
 ## Selected product views
 
@@ -35,17 +46,36 @@ FardaIQ is a production-oriented, multilingual platform for presenting and order
 
 ![Academy system](assets/screens/academy-system-wireframe.png)
 
-## Engineering highlights
+## High-level architecture
 
 | Area | Implementation direction |
 |---|---|
-| Front end | React, Next.js-compatible routing, TypeScript, responsive RTL/LTR UI |
+| Front end | React, TypeScript, Next.js-compatible routing, responsive RTL/LTR UI |
 | Edge runtime | Cloudflare-oriented Vite/Vinext build and Workers deployment model |
 | Data | Relational D1 persistence with Drizzle ORM and reviewed migrations |
-| Files | Private object storage with controlled upload/download flows |
+| Files | Private object storage with controlled upload and download flows |
 | Security | Server-side RBAC, CSRF protection, rate limiting, hardened sessions, audit events |
 | Delivery | Pull requests, automated CI verification, dependency monitoring, deployment workflow |
-| Quality | Linting, build validation, migration verification, and rendered-output tests |
+| Quality | Linting, build validation, migration verification, and rendered-output checks |
+
+## My role
+
+I defined product requirements, designed public, customer, and administrative user flows, coordinated implementation, reviewed security and privacy boundaries, performed acceptance testing, managed the GitHub delivery workflow, investigated CI and compatibility failures, and prepared the project for production hosting.
+
+Development used AI-assisted engineering tools. I remained responsible for requirements, architectural decisions, validation, integration, troubleshooting, security review, and release readiness. This distinction is stated explicitly so employers can evaluate both the scope of the product and my actual contribution.
+
+## Current delivery status
+
+| Item | Status |
+|---|---|
+| Private implementation repository | Active |
+| Main-branch CI | Passing |
+| Dependency and security monitoring | Enabled |
+| Public portfolio showcase | Available |
+| Production hosting | Next milestone |
+| Public live demo and real production screenshots | Pending hosting |
+
+The repository describes an engineered product foundation and production-readiness work. It does not claim that hosting-dependent services, payment providers, transactional email, analytics, consent configuration, or external compliance certification are already live.
 
 ## Documentation
 
@@ -53,14 +83,6 @@ FardaIQ is a production-oriented, multilingual platform for presenting and order
 - [Architecture overview](docs/architecture-overview.md)
 - [Security, privacy, and accessibility](docs/security-privacy-accessibility.md)
 - [Delivery status and roadmap](docs/status-and-roadmap.md)
-
-## Current status
-
-- Private production repository: active
-- CI on the main branch: passing
-- Dependency and security monitoring: enabled
-- Public showcase: available in this repository
-- Production hosting and public live demo: planned next
 
 ## Ownership and contact
 
