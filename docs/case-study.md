@@ -1,79 +1,45 @@
-# Product case study
+# Fallstudie: Von einer Anfrage zur betreuten Projektarbeit
 
-## Context
+## Ausgangslage
 
-Service businesses often divide their public website, sales intake, client communication, project tracking, and educational products across unrelated tools. That fragmentation creates repeated data entry, incomplete briefs, unclear project status, and difficult handoffs.
+Eine Dienstleistungswebsite allein beantwortet nicht, was nach einer Kundenanfrage geschieht. Für FardaIQ sollten Anforderungen, Angebote, Zahlungsprüfung und Projektausführung in einem nachvollziehbaren Ablauf zusammenkommen. Die Oberfläche musste auch für einen Betreiber ohne Programmierkenntnisse verständlich bleiben.
 
-FardaIQ was designed as one multilingual product surface that connects discovery, structured ordering, delivery, support, and learning.
+## Anforderungen und Entscheidungen
 
-## Product goals
+| Anforderung | Umsetzung und Begründung |
+| --- | --- |
+| Anforderungen verständlich aufnehmen | Ein geführter, bedingter Projektfragebogen mit wiederaufnehmbaren Entwürfen |
+| Angebote übersichtlich erfassen | Eigene Auftragsseite mit großen Eingabefeldern, Betrag, Währung, Umfang, Phasen und Terminen |
+| Beträge und Termine lesbar machen | Gruppierte Betragseingaben, exakte Geldumrechnung sowie wählbarer persischer oder gregorianischer Kalender |
+| Projektfortschritt sichtbar machen | Bearbeitbare Phasen, Status, Nachrichten, Dateien und Freigaben in Kunden- und Verwaltungsansicht |
+| Kunden voneinander trennen | Serverseitige Prüfung von Anmeldung, Rolle und Datensatz-Zugehörigkeit |
+| Zahlungen nachvollziehen | Manuelle Bankprüfung; ein hochgeladenes Belegbild gilt nicht als Zahlungsnachweis |
+| Kontozugang wiederherstellen | Zeitlich begrenzte, einmalig verwendbare Links und Widerruf bestehender Sitzungen nach erfolgreichem Zurücksetzen |
+| Änderungen kontrolliert veröffentlichen | Automatisierte Prüfungen, separate Release-Verzeichnisse, Backup vor der Umschaltung und anschließende HTTP-Prüfung |
 
-1. Make complex AI and software services understandable to non-technical customers.
-2. Convert an initial idea into a structured and actionable project brief.
-3. Give customers one workspace for progress, messages, files, decisions, and learning.
-4. Give operators controlled workflows without exposing administrative capabilities to customers.
-5. Support Persian-first RTL presentation while retaining complete English and German experiences.
-6. Keep privacy, accessibility, security, and maintainability part of the architecture from the beginning.
+## Ein konkretes Betriebsproblem
 
-## Core user journeys
+Vor dem Hostingwechsel meldete HTML teilweise HTTP 200, während die Übertragung einer benötigten CSS-Datei abbrach oder stark verzögert war. Ein erfolgreicher HTTP-Status allein erklärte deshalb nicht, ob die Seite für einen Besucher tatsächlich benutzbar war.
 
-### Public visitor
+Nach einem direkten Verbindungstest wurde die Anwendung von Cloudflare Workers/D1 auf einen Linux-VPS mit Node.js, Nginx und SQLite umgestellt. Daten wurden exportiert, auf Integrität und Fremdschlüssel geprüft und vor dem Wechsel gesichert. Der Betreiber bestätigte anschließend eine schnelle Nutzung ohne VPN auf seiner Verbindung. Das ist ein konkretes Testergebnis, keine allgemeine Verfügbarkeitsgarantie und kein Nachweis eines universellen Cloudflare-Problems.
 
-- Discovers AI, automation, web, and software services.
-- Reviews selected work and educational content.
-- Changes language without losing the current context.
-- Starts a guided order instead of submitting an unstructured contact message.
+## Ein konkretes Inhaltsproblem
 
-### Prospective customer
+Google meldete mehrere Rechtstext-Seiten als Duplikate. Die Prüfung zeigte: Deutsche, arabische und türkische Routen erklärten sich jeweils als canonical, lieferten aber englischen Hauptinhalt. Die Korrektur übersetzte alle sechs Rechtstext-Seiten und aktualisierte veraltete Hostingangaben. Jede Sprachversion behält ihre eigene canonical-Adresse und verweist per hreflang auf die anderen Versionen.
 
-- Selects a service and completes a conditional six-step brief.
-- Saves progress and resumes the draft later.
-- Provides requirements, budget, timing, integrations, and files.
-- Reviews a final summary before submission.
+Für diese Veröffentlichung liefen 125 Anwendungstests, 11 Laufzeittests und HTTP-Prüfungen für 30 Rechtstext-Seiten erfolgreich. Anschließend wurden die Seiten auch auf dem Server geprüft und eine erneute Google-Prüfung angefordert. Die spätere Indexierung wird getrennt vom technischen Testergebnis bewertet.
 
-### Active customer
+## Meine Rolle und Unterstützung
 
-- Sees orders and project milestones in one dashboard.
-- Exchanges messages and controlled files.
-- Reviews proposals and records explicit approvals.
-- Tracks course enrollment and learning progress.
+Ich habe Anforderungen und Benutzerabläufe festgelegt, praktische Tests durchgeführt, Fehlverhalten beschrieben, Änderungen nachprüfen lassen und Releases auf dem Server ausgeführt. Implementierung, Dokumentation und Tests entstanden mit KI-Unterstützung. Ich nutze die Projekte, um Anwendungscode, Datenmodelle, Debugging und Tests besser zu verstehen; sie werden nicht als vollständig selbstständig programmierte Prüfungsleistung dargestellt.
 
-### Operator and administrator
+## Was ich in einer Ausbildung weiterlernen möchte
 
-- Processes incoming orders through defined states.
-- Creates proposals and projects with traceable transitions.
-- Manages course content and operational records.
-- Uses server-side authorization rather than relying on hidden interface elements.
+- Geschäftsregeln selbstständig in überschaubarem Code umsetzen.
+- Änderungen mit passenden Tests absichern und im Code-Review erklären.
+- Relationale Daten und Zustandsübergänge konsistent modellieren.
+- Anforderungen, Entscheidungen und offene Grenzen verständlich dokumentieren.
 
-## Product and engineering decisions
+## Noch offen
 
-- **Progressive disclosure:** users answer only questions relevant to their selected service.
-- **Recoverable drafts:** complex briefs can be resumed instead of restarted.
-- **Server-authoritative decisions:** sensitive access and state transitions are validated on the server.
-- **Localized information architecture:** translations, metadata, canonical paths, and layout direction are treated as one system.
-- **Migration-controlled data evolution:** relational changes are reviewed and verified rather than applied informally.
-- **Pull-request delivery:** changes are validated by CI before entering the main branch.
-- **Private implementation, public case study:** employers can review product and engineering thinking without exposing proprietary source.
-
-## My contribution
-
-I translated the product idea into requirements and user flows, structured the public, customer, academy, and administrative experiences, coordinated implementation, reviewed security and privacy boundaries, performed acceptance testing, managed branch and pull-request delivery, investigated CI and Linux compatibility problems, and prepared the system for production deployment.
-
-The implementation process used AI-assisted engineering tools. My responsibility remained the definition of correct behaviour, architectural and product decisions, review of generated changes, integration, testing, troubleshooting, security evaluation, and release readiness.
-
-## Validation and delivery discipline
-
-- Main-branch CI is passing.
-- Pull requests are used to isolate and review changes.
-- Dependency and security monitoring are enabled.
-- Build, lint, migration, and rendered-output checks are part of the verification direction.
-- Secrets and hosting-account configuration are excluded from source control.
-- Production hosting and final external-provider configuration are reported as pending rather than already live.
-
-## Outcome
-
-The result is more than a landing page: it is a cohesive product foundation spanning acquisition, structured ordering, customer operations, learning, administration, and governance. The project demonstrates product analysis, multilingual UX, web application architecture, relational data thinking, security awareness, Git-based delivery, CI troubleshooting, and production-readiness planning.
-
-## Honest scope boundary
-
-The private implementation and public showcase are active, but the public live environment is the next milestone. Hosting-dependent integrations, production payment and email providers, operational analytics, consent configuration, and final legal review remain part of deployment and operational readiness. No external compliance certification is claimed.
+SMS und Online-Zahlungsanbieter sind nicht angeschlossen. Eine vollständige Wiederherstellungsprobe des aktuellen Serverbackups, unabhängige Sicherheits- und Lastprüfungen sowie weitere Geräteprüfungen stehen aus. Die Akademie-Funktionen sind als Grundlage vorhanden; ein vollständig betriebenes Lernangebot ist damit nicht nachgewiesen.

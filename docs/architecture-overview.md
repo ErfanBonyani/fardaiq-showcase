@@ -1,34 +1,29 @@
-# Architecture overview
+# Aktuelle Architektur
 
-![FardaIQ technical architecture](../assets/screens/technical-architecture.png)
+Stand: 17. Oktober 2026. Diese Übersicht beschreibt den VPS-Betrieb. Die frühere Architektur-Grafik im Bilderordner gehört zur Entwurfsphase und ist keine Beschreibung der aktuellen Infrastruktur.
 
-FardaIQ follows a layered architecture that separates public presentation, authenticated experiences, domain services, persistence, and integrations.
+| Schicht | Verantwortung |
+| --- | --- |
+| Oberfläche | Mehrsprachige öffentliche Seiten, Anfragen, Kundenportal und Verwaltung; React und TypeScript |
+| Webserver | Nginx nimmt HTTPS-Anfragen entgegen und leitet sie an die Node.js-Anwendung weiter |
+| Anwendung | Vinext/Vite, serverseitige Sitzungen, Rollenprüfung, Eingabevalidierung und Geschäftsregeln |
+| Daten | SQLite für Konten, Aufträge, Angebote, Projekte, Zahlungen und weitere Anwendungsdaten; versionierte Migrationen |
+| Dateien | Geschützter Speicher für private Projektdateien mit kontrolliertem Zugriff; Zahlungsbelege in der Datenbank |
+| Integrationen | Resend für Dienst-E-Mails und Kontowiederherstellung; optionale Dienste nur nach Konfiguration |
+| Betrieb | systemd, HTTPS-Erneuerung, verschlüsselte Backups und Erreichbarkeitsüberwachung |
 
-## Experience layer
+## Wichtige Grenzen
 
-- Public multilingual website
-- Guided order flow
-- Authenticated customer portal
-- Administrative workspace
-- Academy and certificate verification
+- Ein sichtbarer oder ausgeblendeter Button ist keine Berechtigungsprüfung. Der Server prüft Rolle und Zugehörigkeit zum Datensatz.
+- Ein Zahlungsbeleg ist eine Eingabe zur Prüfung, keine bestätigte Buchung.
+- Nachrichten für Mitarbeiter und Nachrichten für Kunden haben unterschiedliche Sichtbarkeit.
+- Datenbank und private Dateien liegen außerhalb des austauschbaren Anwendungscodes.
+- E-Mail-Versand, Sicherung und Überwachung sind eigene betriebliche Aufgaben.
 
-## Server and domain layer
+## Änderungen veröffentlichen
 
-- Locale-aware routing and rendering
-- Authentication, sessions, and role-based authorization
-- Order, project, academy, and content domains
-- File, payment, email, and external-provider adapters
-- Structured validation and auditable state transitions
+Änderungen werden über GitHub mit Typprüfung, Linting, Tests und Build geprüft. Die Serverinstallation erfolgt separat: neue Version in einem eigenen Verzeichnis bauen, Backup erstellen, Code umschalten und HTTP-Prüfungen ausführen. Bei fehlgeschlagener Prüfung kann der vorherige Code wiederhergestellt werden.
 
-## Data and storage layer
+Die ursprüngliche Workers/D1-Lösung ist nicht mehr der aktuelle Hostingpfad. Cloudflare bleibt für DNS und konfigurierte E-Mail-Weiterleitung relevant.
 
-- Relational state for identities, orders, projects, academy records, and audit history
-- Private object storage for project files and course assets
-- Migration-controlled schema evolution
-- Backup and restore readiness
-
-## Delivery model
-
-Changes are developed on short-lived branches, validated through pull requests, and merged only after automated checks. The deployment workflow is designed to publish the verified main branch to the hosting environment once production credentials and infrastructure are configured.
-
-This document intentionally omits internal database definitions, private API contracts, infrastructure identifiers, and security-sensitive implementation details.
+Diese Dokumentation enthält keine Serveradressen, Zugangsdaten, privaten API-Verträge oder Kundeninformationen.

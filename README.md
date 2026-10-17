@@ -1,96 +1,79 @@
-# FardaIQ — Multilingual AI Services Platform
+# FardaIQ — Webanwendung für Kundenaufträge und Projekte
 
-![FardaIQ cover](assets/brand/fardaiq-social-card.png)
+**[Website auf Deutsch öffnen](https://www.fardaiq.ir/de)** · **[Persische Version](https://www.fardaiq.ir/fa)** · **[Fallstudie](docs/case-study.md)**
 
-FardaIQ is a production-oriented, multilingual platform for presenting and ordering AI, automation, web, and software services. It connects a public service website, a guided project brief, a customer workspace, an academy, and administrative operations in one product foundation.
+FardaIQ verbindet eine mehrsprachige Dienstleistungswebsite mit einem Kundenportal und einer Verwaltung. Ein Auftrag kann von der ersten Anfrage über Angebot und Zahlungsprüfung bis zu Projektphasen, Nachrichten und Freigaben begleitet werden.
 
-> **Portfolio showcase:** The complete implementation is maintained in a private repository. This public repository contains selected product visuals, a high-level architecture overview, and a technical case study. It includes no customer data, credentials, private API contracts, database definitions, or proprietary business logic.
+**Portfolio von Erfan Bonyani · Ausbildungsziel: Fachinformatiker für Anwendungsentwicklung.**
 
-## Employer quick view
+## In zwei Minuten
 
-| Area | What this project demonstrates |
-|---|---|
-| Product design | Turning broad service requests into structured customer and operator workflows |
-| Front-end engineering | React/TypeScript, responsive layouts, multilingual routing, and native RTL/LTR behaviour |
-| Data and backend direction | Relational modelling, migrations, authenticated domains, and controlled file workflows |
-| Security thinking | Server-side authorization, CSRF protection, rate limiting, hardened sessions, and audit events |
-| Delivery | Git branches, pull requests, CI verification, dependency monitoring, and deployment preparation |
-| Product scope | Marketing, ordering, customer operations, learning, administration, and governance |
+| Frage | Antwort |
+| --- | --- |
+| Welches Problem wird gelöst? | Anforderungen, Angebote und Projektfortschritt sollen für Kunde und Anbieter nachvollziehbar bleiben. |
+| Was ist bereits in Betrieb? | Website, Anmeldung, E-Mail und Passwort-Wiederherstellung sowie Auftrags- und Projektabläufe. |
+| Was zeigt die Anwendungsentwicklung? | Formularvalidierung, Geschäftsregeln, Rollen, relationale Daten, Zustandsübergänge und automatisierte Tests. |
+| Kann ich den Quellcode hier prüfen? | Dieses Repository ist eine öffentliche Fallstudie; der vollständige Anwendungscode ist privat. |
+| Wo gibt es ein kleines Codebeispiel? | [Eigenständige Python-Lernübung mit Tests](https://github.com/ErfanBonyani/ErfanBonyani/tree/main/examples/order-workflow). |
 
-## Product experience
+## Ein durchgängiger Ablauf
 
-- Persian, English, and German interfaces
-- Native RTL/LTR layouts and locale-aware SEO
-- AI agents, automation, web products, and custom software services
-- Conditional six-step project brief with draft recovery
-- Customer portal for orders, projects, milestones, messages, files, and approvals
-- Academy foundation for courses, learning paths, progress, assessments, and certificates
-- Administrative operations for projects, proposals, content, and course management
-- Privacy, accessibility, auditability, and EU/Germany-readiness foundations
+1. Der Kunde beschreibt sein Vorhaben in einem geführten Formular.
+2. Der Administrator erstellt ein übersichtliches Angebot mit Umfang, Betrag, Währung und Terminen.
+3. Der Kunde nimmt das Angebot an und übermittelt gegebenenfalls einen Überweisungsbeleg.
+4. Der Administrator prüft den tatsächlichen Zahlungseingang und legt das Projekt an.
+5. Beide Seiten verfolgen Phasen, Nachrichten, Dateien und Freigaben im jeweiligen Arbeitsbereich.
 
-## Selected product views
+Persische und gregorianische Datumswahl, lesbare Beträge und eine optionale Empfänger-IBAN unterstützen den Ablauf. Ein Belegbild löst keine automatische Zahlungsbestätigung aus.
 
-### Responsive homepage and conversion flow
+## Technischer Überblick
 
-![Homepage wireframe](assets/screens/homepage-wireframe.png)
+| Bereich | Aktueller Stand |
+| --- | --- |
+| Anwendung | TypeScript, React und Vinext/Vite mit Next.js-kompatibler Struktur |
+| Server | Node.js hinter Nginx auf einem Linux-VPS, HTTPS und systemd |
+| Daten | SQLite und versionierte SQL-Migrationen |
+| Dateien | Geschützter Dateispeicher und serverseitige Zugriffsprüfung |
+| Kommunikation | Transaktions-E-Mails und Passwort-Wiederherstellung über Resend |
+| Sprachen | Persisch, Englisch, Deutsch, Arabisch und Türkisch; RTL/LTR und lokalisierte Metadaten |
+| Qualität | Typprüfung, Linting, automatisierte Tests, CI und kontrollierte Veröffentlichung |
+| Betrieb | Verschlüsselte Backups, lokale Überwachung und externe Erreichbarkeitsprüfung |
 
-### Guided project-ordering experience
+Die frühere Cloudflare-Workers/D1-Bereitstellung wurde durch den VPS-Betrieb ersetzt. GitHub speichert den Code und prüft Änderungen; ein Commit allein veröffentlicht keine neue Serverversion.
 
-![Order wizard](assets/screens/order-wizard-wireframe.png)
+## Nachvollziehbare Prüfung
 
-### Customer project workspace
+Für die am **17. Oktober 2026** veröffentlichte Korrektur der Rechtstexte wurden **125 Anwendungstests und 11 Laufzeittests** erfolgreich ausgeführt. Zusätzlich wurden alle **30 Rechtstext-Seiten** auf HTTP-Antwort, Sprache, Inhalt, canonical und hreflang geprüft; diese Seitenprüfung lief auch nach der Serverinstallation erfolgreich.
 
-![Customer portal](assets/screens/customer-portal-wireframe.png)
+Diese Prüfungen ersetzen weder einen unabhängigen Sicherheitstest noch einen Lasttest oder eine vollständige Prüfung aller Oberflächen.
 
-### Integrated academy
+## Meine Rolle
 
-![Academy system](assets/screens/academy-system-wireframe.png)
+Anforderungen, Kunden- und Verwaltungsabläufe, Abnahmetests, Fehlerreproduktion, Release-Prüfung und Inbetriebnahme. Für Implementierung, Tests und Dokumentation wurden KI-gestützte Werkzeuge genutzt. Ich baue meine Programmiergrundlagen weiter aus; das Projekt wird nicht als vollständig ohne Unterstützung programmierte Arbeit dargestellt.
 
-## High-level architecture
+## Grenzen und nächste Schritte
 
-| Area | Implementation direction |
-|---|---|
-| Front end | React, TypeScript, Next.js-compatible routing, responsive RTL/LTR UI |
-| Edge runtime | Cloudflare-oriented Vite/Vinext build and Workers deployment model |
-| Data | Relational D1 persistence with Drizzle ORM and reviewed migrations |
-| Files | Private object storage with controlled upload and download flows |
-| Security | Server-side RBAC, CSRF protection, rate limiting, hardened sessions, audit events |
-| Delivery | Pull requests, automated CI verification, dependency monitoring, deployment workflow |
-| Quality | Linting, build validation, migration verification, and rendered-output checks |
+- Überweisungen werden manuell geprüft; ein Online-Zahlungsanbieter ist nicht angeschlossen.
+- Ein SMS-Anbieter ist noch nicht eingerichtet.
+- Eine vollständige Wiederherstellungsprobe des aktuellen Serverbackups in einer getrennten Umgebung steht noch aus.
+- Die Akademie ist eine technische Grundlage; ein vollständig betriebener Kurskatalog wird hier nicht behauptet.
+- Barrierefreiheit und Datenschutz werden berücksichtigt; eine externe Zertifizierung oder landesspezifische Rechtsprüfung wird nicht behauptet.
 
-## My role
+## Dokumentation und frühere Entwürfe
 
-I defined product requirements, designed public, customer, and administrative user flows, coordinated implementation, reviewed security and privacy boundaries, performed acceptance testing, managed the GitHub delivery workflow, investigated CI and compatibility failures, and prepared the project for production hosting.
+- [Fallstudie: Anforderungen, Entscheidungen und Lernerfahrungen](docs/case-study.md)
+- [Aktuelle Architektur](docs/architecture-overview.md)
+- [Sicherheit, Datenschutz und Barrierefreiheit](docs/security-privacy-accessibility.md)
+- [Status und nächste Schritte](docs/status-and-roadmap.md)
 
-Development used AI-assisted engineering tools. I remained responsible for requirements, architectural decisions, validation, integration, troubleshooting, security review, and release readiness. This distinction is stated explicitly so employers can evaluate both the scope of the product and my actual contribution.
+Die Bilder unter `assets/screens/` sind **frühere Konzeptgrafiken und Wireframes**, keine aktuellen Produktionsscreenshots. Sie dokumentieren die Entwurfsphase; für den aktuellen Stand nutzen Sie die Live-Website und die obigen Dokumente.
 
-## Current delivery status
+## English summary
 
-| Item | Status |
-|---|---|
-| Private implementation repository | Active |
-| Main-branch CI | Passing |
-| Dependency and security monitoring | Enabled |
-| Public portfolio showcase | Available |
-| Production hosting | Next milestone |
-| Public live demo and real production screenshots | Pending hosting |
+A live multilingual web application covering project enquiries, proposals, manual payment review and customer collaboration. The current runtime uses Node.js, Nginx and SQLite on a Linux VPS. This repository is a public case study, not an open-source distribution of the application.
 
-The repository describes an engineered product foundation and production-readiness work. It does not claim that hosting-dependent services, payment providers, transactional email, analytics, consent configuration, or external compliance certification are already live.
+## Kontakt und Rechte
 
-## Documentation
+**Erfan Bonyani** · [GitHub](https://github.com/ErfanBonyani) · [E-Mail](mailto:erfan.bonyaniapp@gmail.com)
 
-- [Product case study](docs/case-study.md)
-- [Architecture overview](docs/architecture-overview.md)
-- [Security, privacy, and accessibility](docs/security-privacy-accessibility.md)
-- [Delivery status and roadmap](docs/status-and-roadmap.md)
-
-## Ownership and contact
-
-Designed and developed by **Erfan Bonyani**.
-
-- GitHub: [ErfanBonyani](https://github.com/ErfanBonyani)
-- Email: [erfan.bonyaniapp@gmail.com](mailto:erfan.bonyaniapp@gmail.com)
-
-## Usage notice
-
-This repository is a portfolio presentation, not an open-source distribution. All product designs, documentation, branding, and associated materials are proprietary. See [LICENSE.md](LICENSE.md).
+Proprietäre Projektdokumentation. Siehe [LICENSE.md](LICENSE.md). Kundendaten, Zugangsdaten und Produktionskonfiguration sind nicht Bestandteil dieses Repositories.
